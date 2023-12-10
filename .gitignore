@@ -1,0 +1,6 @@
+# ignore ALL .log files
+*.log
+
+# ignore ALL files in ANY directory named temp
+23.11.25_Activity_Module3/7210_1.csv
+23.11.25_Activity_Module3/Datafiniti_Womens_Shoes_Jun19.csv
