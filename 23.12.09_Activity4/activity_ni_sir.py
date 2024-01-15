@@ -220,30 +220,23 @@ def multiple_linear_regression_template():
 print("MODEL 1: ALL INDEPENDENT VARIABLES")
 multiple_linear_regression_template()
 
-'''
-MODEL 2
-'''
 
-#To Feature scale the X_dummytrap_standard
-X_dummytrap_standard = X_dummytrap.copy()
-X_dummytrap_standard[:, 2:5] = standard_scaler.fit_transform(X_dummytrap_standard[:, 2:5])
+# backward elimination process
 
-# Get the 0th index and 2nd index of the X_dummytrap_standard
-X_dummytrap_standard = X_dummytrap_standard[:, [0, 2]]
+import statsmodels.regression.linear_model as lm
 
-print("MODEL 2: R&D Spend and Marketing Spend")
-multiple_linear_regression_template()
 
-'''
-MODEL 3
-'''
+# To introduce column of 1's for the X0 constant
+Xnew = np.append(arr = np.ones((50, 1)).astype(int), values = X_dummytrap_standard, axis = 1)
 
-#To Feature scale the X_dummytrap_standard
-X_dummytrap_standard = X_dummytrap.copy()
-X_dummytrap_standard[:, 2:5] = standard_scaler.fit_transform(X_dummytrap_standard[:, 2:5])
 
-# Get the 0th index and 2nd index of the X_dummytrap_standard
-X_dummytrap_standard = X_dummytrap_standard[:, [0]]
+#X0 is a constant equal 1
+#X1 is for Florida
+#X2 is for New York
+#X3 is for R&D Spend
+#X4 is for Administration
+#X5 is for Marketing Spend
 
-print("MODEL 3: R&D Spend")
-multiple_linear_regression_template()
+X_optimal1 = Xnew[:, [0, 1, 2, 3, 4, 5]]
+regressor_OLS = lm.OLS(endog = Y, exog = X_optimal1).fit()
+regressor_OLS.summary()
