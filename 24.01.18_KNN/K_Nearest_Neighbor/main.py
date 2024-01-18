@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # TO IMPORT DATASET
-dataset = pd.read_csv("Social_Network_Ads.csv")
+dataset = pd.read_csv("./Social_Network_Ads.csv")
 
 # Preliminary Analysis of Dataset
 
