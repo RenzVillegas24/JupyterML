@@ -50,7 +50,7 @@ X_test_standard = standard_scaler.transform(X_test_standard)
 # To fit the Training Dataset into a Suppiort Vector Machine Model
 from sklearn.svm import SVC
 
-support_vector_machine = SVC(kernel = "rbf")
+support_vector_machine = SVC(kernel = "")
 support_vector_machine.fit(X_train_standard, Y_train)
 
 Y_predict = SVC.predict(support_vector_machine, X_test_standard)
